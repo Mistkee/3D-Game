@@ -9,19 +9,24 @@ public class Gun : MonoBehaviour
     public float weaponRange = 50f;
     public float hitForce = 100f;
     public Transform gunEnd;
+    public GameObject player;
+    public int ammo;
 
+    public Camera fpsCam;
+    private WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
 
-    private Camera fpsCam;
-    private WaitForSeconds shotDuration = new WaitForSeconds(0.7f);
     private AudioSource gunAudio;
+    public AudioClip handgunAudio;
+
     private LineRenderer laserLine;
     private float nextFire;
     // Start is called before the first frame update
     void Start()
     {
-        laserLine = GetComponent<LineRenderer>();
-        gunAudio = GetComponent<AudioSource>();
-        fpsCam = GetComponentInParent<Camera>();
+        laserLine = player.GetComponent<LineRenderer>();
+        laserLine.enabled = true;
+        gunAudio = player.GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -29,7 +34,7 @@ public class Gun : MonoBehaviour
     {
        
 
-        if (Input.GetButtonDown ("Fire1") && Time.time > nextFire)
+        if (Input.GetButtonDown ("Fire1") && Time.time > nextFire && ammo > 0)
         {
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());
@@ -38,9 +43,9 @@ public class Gun : MonoBehaviour
             laserLine.SetPosition(0, gunEnd.position);
 
 
-            //Goat method, instance an object, throw it out in an arc, send out a ball of raycasts from it 
+            //Sheep method, instance an object, throw it out in an arc, send out a ball of raycasts from it 
             //- in every direction, to add force to everything hit, and kill it
-            //Shot gun method, do more than one raycast, ideally 8-12
+            //Shot gun method, do more than one raycast, ideally 8
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
             {
                 //Take this out for sniper, pass through
@@ -67,6 +72,7 @@ public class Gun : MonoBehaviour
 
     private IEnumerator ShotEffect()
     {
+        gunAudio.clip = handgunAudio;
         gunAudio.Play();
         laserLine.enabled = true;
         yield return shotDuration;
