@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 public class FPCamera : MonoBehaviour
 {
@@ -7,16 +8,31 @@ public class FPCamera : MonoBehaviour
     public float verticalSpeed = 1f;
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
+    private bool MenuIsOn;
     private Camera cam;
 
     void Start()
     {
         CurrentHealth = MaxHealth;
         cam = Camera.main;
+        MenuIsOn = false;
     }
 
     void Update()
     {
+        // Cursor lock
+        if (Input.GetKeyDown(KeyCode.Escape) && !MenuIsOn)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            MenuIsOn = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && MenuIsOn)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            MenuIsOn = false;
+        }
+
+        //Camera movement
         float mouseX = Input.GetAxis("Mouse X") * horizontalSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * verticalSpeed;
 
