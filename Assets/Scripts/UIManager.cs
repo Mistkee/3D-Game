@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Slider slider; 
-    public Gradient gradient; // Optional
+    public Gradient gradient;
     public Image fill;
 
     private void Start()
@@ -16,12 +16,10 @@ public class UIManager : MonoBehaviour
         slider.maxValue = FPCamera.MaxHealth;
 
 
-        // Optional
         fill.color = gradient.Evaluate(1f);
 
         slider.value = FPCamera.CurrentHealth;
 
-        // Optional
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }

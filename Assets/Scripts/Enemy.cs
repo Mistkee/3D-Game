@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float speed = 4f;
     public float attackSpeed = 6f;
     public int damage = 20;
@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
     }
 
