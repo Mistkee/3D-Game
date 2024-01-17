@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private bool canAttack = true;
     private float lastAttackTime;
     Rigidbody rb;
+    public static int health;
 
     private void Start()
     {
@@ -64,5 +65,10 @@ public class Enemy : MonoBehaviour
     void DealDamage()
     {
         FPCamera.CurrentHealth -= damage;
+    }
+
+    private void Die()
+    {
+        
     }
 }
