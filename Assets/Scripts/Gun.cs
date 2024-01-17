@@ -72,6 +72,7 @@ public class Gun : MonoBehaviour
 
     private IEnumerator ShotEffect()
     {
+        //VFX
         gunAudio.clip = handgunAudio;
         gunAudio.Play();
         laserLine.enabled = true;
