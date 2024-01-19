@@ -85,7 +85,7 @@ public class Goat : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        ShootableBox health = collision.collider.GetComponent<ShootableBox>();
+        Enemy health = collision.collider.GetComponent<Enemy>();
 
         if (health != null)
         {

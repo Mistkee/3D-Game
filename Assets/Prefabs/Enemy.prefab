@@ -123,6 +123,7 @@ MonoBehaviour:
   speed: 1
   attackSpeed: 0.5
   damage: 5
+  currentHealth: 100
 --- !u!54 &3390921580596741262
 Rigidbody:
   m_ObjectHideFlags: 0

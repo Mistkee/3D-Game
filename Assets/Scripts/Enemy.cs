@@ -10,10 +10,11 @@ public class Enemy : MonoBehaviour
     private bool canAttack = true;
     private float lastAttackTime;
     Rigidbody rb;
-    public static int health;
+    public int currentHealth;
 
     private void Start()
     {
+        currentHealth = 100;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
     }
@@ -66,9 +67,16 @@ public class Enemy : MonoBehaviour
     {
         FPCamera.CurrentHealth -= damage;
     }
-
-    private void Die()
+    public void Damage(int damageAmount)
     {
-        
+        //subtract damage amount when Damage function is called
+        currentHealth -= damageAmount;
+
+        //Check if health has fallen below zero
+        if (currentHealth <= 0)
+        {
+            //if health has fallen below zero, deactivate it 
+            Destroy(gameObject);
+        }
     }
 }
