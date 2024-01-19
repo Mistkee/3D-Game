@@ -508,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.44999695
+      value: 0.4499969
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.35000002
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -564,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1664092502463595309, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_Layer
@@ -580,6 +580,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1046540689}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1046540690}
   m_SourcePrefab: {fileID: 100100000, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
 --- !u!4 &1046540688 stripped
 Transform:
@@ -608,10 +611,27 @@ MonoBehaviour:
   fpsCam: {fileID: 1638095768}
   handgunAudio: {fileID: 8300000, guid: 81a6153000036344e98c354b326e080c, type: 3}
   handgunReloadAudio: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  gunPositionY: 0.3
-  reloadPositionY: -0.3
-  gunPositionX: 0.05
-  recoilPositionX: -0.05
+--- !u!95 &1046540690
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921299980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24fb48c3081989b4ca0834cfa2723c62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1221204008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3507746843320673371, guid: 4f9eebc977b93d641a58f15164948196, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3507746843373913714, guid: 4f9eebc977b93d641a58f15164948196, type: 3}
       propertyPath: m_Layer

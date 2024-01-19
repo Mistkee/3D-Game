@@ -67,7 +67,7 @@ public class Shotgun : MonoBehaviour
                     laserLine.SetPosition(1, hit.point);
 
                     //Adjust this to Omid's enemy health system
-                    ShootableBox health = hit.collider.GetComponent<ShootableBox>();
+                    Enemy health = hit.collider.GetComponent<Enemy>();
 
                     if (health != null)
                     {

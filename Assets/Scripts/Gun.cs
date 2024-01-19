@@ -11,28 +11,27 @@ public class Gun : MonoBehaviour
     public float hitForce = 100f;
     public Transform gunEnd;
     public GameObject player;
-
+    
    
     public int ammo;
 
     public Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
-    private WaitForSeconds reloadDuration = new WaitForSeconds(0.8f);
+    private WaitForSeconds reloadDuration = new WaitForSeconds(1f);
+    private Animator animator;
+    private bool isReloading = false;
 
     private AudioSource gunAudio;
     public AudioClip handgunAudio;
     public AudioClip handgunReloadAudio;
-    public float gunPositionY;
-    public float reloadPositionY;
-    public float gunPositionX;
-    public float recoilPositionX;
+    
 
     private LineRenderer laserLine;
     private float nextFire;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
         laserLine = player.GetComponent<LineRenderer>();
         laserLine.enabled = true;
         gunAudio = player.GetComponent<AudioSource>();
@@ -44,7 +43,7 @@ public class Gun : MonoBehaviour
     {
         
 
-        if (Input.GetButtonDown ("Fire1") && Time.time > nextFire && ammo > 0)
+        if (Input.GetButtonDown ("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());
@@ -84,25 +83,26 @@ public class Gun : MonoBehaviour
     private IEnumerator ShotEffect()
     {
         // swap laser line for VFX
-        //Recoil effect creates bugs
-        //transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, recoilPositionX, 0), 10 * Time.deltaTime);
+        animator.SetTrigger("Recoil");
         gunAudio.clip = handgunAudio;
         gunAudio.Play();
         laserLine.enabled = true;
         yield return shotDuration;
         laserLine.enabled = false;
-        //transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, gunPositionX, 0), 10 * Time.deltaTime);
 
     }
 
     private IEnumerator Reload()
     {
         // small bug with height
-        transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, reloadPositionY, 0), 10 * Time.deltaTime);
+        // do with animation
+        isReloading = true;
+        animator.SetBool("isReloading", true);
         gunAudio.clip = handgunReloadAudio;
         gunAudio.Play();
         yield return reloadDuration;
         ammo = 8;
-        transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3 (0,gunPositionY,0), 10 * Time.deltaTime);
-    }
+        animator.SetBool("isReloading", false);
+        isReloading = false;
+    } 
 }
