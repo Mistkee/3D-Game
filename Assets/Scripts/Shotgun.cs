@@ -55,8 +55,8 @@ public class Shotgun : MonoBehaviour
             for (int i = 0; i < 8; i++)
             {
                 
-                float xOffset = Random.RandomRange(1, -1);
-                float yOffset = Random.RandomRange(1, -1);
+                float xOffset = Random.Range(1, -1);
+                float yOffset = Random.Range(1, -1);
                 offset = new Vector3(xOffset, yOffset, 0);
 
                 if (Physics.SphereCast(rayOrigin, radius, fpsCam.transform.forward+offset, out hit, weaponRange))
