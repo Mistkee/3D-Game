@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector3 randomPos = player.position + Random.insideUnitSphere * spawnRadius;
-            randomPos.y = 0f;
+            randomPos.y = player.position.y+3;
             Instantiate(enemyPrefab, randomPos, Quaternion.identity);
         }
     }
