@@ -12,7 +12,10 @@ public class Shotgun : MonoBehaviour
     public float hitForce = 100f;
     public Transform gunEnd;
     public GameObject player;
-
+    private Vector3 bulletSpread = new Vector3(.1f,.1f,.1f);
+    private ParticleSystem shotParticle;
+    private ParticleSystem impactParticle;
+    private TrailRenderer bulletTrail;
 
     public int ammo;
 
@@ -42,12 +45,11 @@ public class Shotgun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
 
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
             nextFire = Time.time + fireRate;
-            StartCoroutine(ShotEffect());
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
             RaycastHit hit2;
@@ -62,6 +64,7 @@ public class Shotgun : MonoBehaviour
 
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(0,0.5f,0), out hit, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit.point);
 
@@ -79,10 +82,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(0, -0.5f, 0), out hit2, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit2.point);
 
@@ -100,10 +105,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(0.5f, 0.5f, 0), out hit3, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit3.point);
 
@@ -121,10 +128,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(-0.5f, 0.5f, 0), out hit4, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit4.point);
 
@@ -142,10 +151,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(0.5f, -0.5f, 0), out hit5, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit5.point);
 
@@ -163,10 +174,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(-0.5f, -0.5f, 0), out hit6, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit6.point);
 
@@ -184,10 +197,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(0.5f, 0, 0), out hit7, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit7.point);
 
@@ -205,10 +220,12 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward + new Vector3(-0.5f, 0, 0), out hit8, weaponRange))
             {
+                StartCoroutine(ShotEffect());
                 //Take this out for sniper, pass through
                 laserLine.SetPosition(1, hit8.point);
 
@@ -226,6 +243,7 @@ public class Shotgun : MonoBehaviour
             }
             else
             {
+                StartCoroutine(ShotEffect());
                 laserLine.SetPosition(1, fpsCam.transform.forward * weaponRange);
             }
         }
@@ -260,4 +278,6 @@ public class Shotgun : MonoBehaviour
         animator.SetBool("isReloading", false);
         isReloading = false;
     }
+
+   
 }
