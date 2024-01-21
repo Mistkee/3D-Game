@@ -564,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1664092502463595309, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_Layer
@@ -1725,7 +1725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a7bf35227d63f97489b85bda9ffb3655, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1664092502463595309, guid: a7bf35227d63f97489b85bda9ffb3655, type: 3}
       propertyPath: m_Layer
@@ -1741,6 +1741,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7bf35227d63f97489b85bda9ffb3655, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1610217837}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7bf35227d63f97489b85bda9ffb3655, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1610217838}
   m_SourcePrefab: {fileID: 100100000, guid: a7bf35227d63f97489b85bda9ffb3655, type: 3}
 --- !u!4 &1610217836 stripped
 Transform:
@@ -1760,17 +1763,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunDamage: 1
-  radius: 5
   fireRate: 0.25
   weaponRange: 50
   hitForce: 100
   gunEnd: {fileID: 1917331916}
   player: {fileID: 1221204008}
-  hitMask:
-    serializedVersion: 2
-    m_Bits: 1
+  ammo: 0
   fpsCam: {fileID: 1638095768}
   shotgunAudio: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
+  shotgunReloadAudio: {fileID: 0}
+--- !u!95 &1610217838
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861322086}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de72ae87ade4dbb4b858d960f17939be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1638095766
 GameObject:
   m_ObjectHideFlags: 0
