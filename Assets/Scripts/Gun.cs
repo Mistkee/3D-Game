@@ -83,7 +83,7 @@ public class Gun : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, gunEnd.position + transform.forward * weaponRange, Vector3.zero, false));
             }
         }
-        if (ammo == 0)
+        if (ammo <= 0)
         {
             StartCoroutine (Reload());
         }

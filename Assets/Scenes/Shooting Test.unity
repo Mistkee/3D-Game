@@ -738,7 +738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1664092502463595309, guid: 9f9c7f29c88b53c418c1d46cdf4e6a83, type: 3}
       propertyPath: m_Layer
@@ -1841,7 +1841,11 @@ MonoBehaviour:
   hitForce: 100
   gunEnd: {fileID: 1917331916}
   player: {fileID: 1221204008}
-  ammo: 0
+  shotParticle: {fileID: 198234346748616026, guid: 6dc70c0208607184d838b00e81a6e778, type: 3}
+  impactParticle: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
+  bulletTrail: {fileID: 328621789431213768, guid: 3e251a87d81c9d942af4ae8db97ece87, type: 3}
+  BulletSpeed: 100
+  ammo: 8
   fpsCam: {fileID: 1638095768}
   shotgunAudio: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   shotgunReloadAudio: {fileID: 0}

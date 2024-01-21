@@ -7,7 +7,7 @@ public class MachineGun : MonoBehaviour
     public int gunDamage = 30;
     public float fireRate = .15f;
     public float weaponRange = 70f;
-    public float hitForce = 100f;
+    public float hitForce = 150f;
     public Transform gunEnd;
     public GameObject player;
     [SerializeField]
@@ -82,7 +82,7 @@ public class MachineGun : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, gunEnd.position + transform.forward * weaponRange, Vector3.zero, false));
             }
         }
-        if (ammo == 0)
+        if (ammo <= 0)
         {
             StartCoroutine(Reload());
         }

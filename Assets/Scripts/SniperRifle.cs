@@ -7,7 +7,7 @@ public class SniperRifle : MonoBehaviour
     public int gunDamage = 100;
     public float fireRate = .4f;
     public float weaponRange = 100f;
-    public float hitForce = 100f;
+    public float hitForce = 400f;
     public Transform gunEnd;
     public GameObject player;
     [SerializeField]
@@ -20,11 +20,11 @@ public class SniperRifle : MonoBehaviour
     private float BulletSpeed = 100;
 
 
-    public int ammo = 5;
+    public int ammo = 6;
 
     public Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
-    private WaitForSeconds reloadDuration = new WaitForSeconds(1f);
+    private WaitForSeconds reloadDuration = new WaitForSeconds(2f);
     private Animator animator;
     private bool isReloading = false;
 
@@ -79,7 +79,7 @@ public class SniperRifle : MonoBehaviour
 
             StartCoroutine(SpawnTrail(trail, gunEnd.position + transform.forward * weaponRange, Vector3.zero, false));
         }
-        if (ammo == 0)
+        if (ammo <= 0)
         {
             StartCoroutine(Reload());
         }
@@ -94,7 +94,7 @@ public class SniperRifle : MonoBehaviour
     }
     private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint, Vector3 HitNormal, bool MadeImpact)
     {
-
+        //Doesnt make a hole imprint on what it shoots
         Vector3 startPosition = Trail.transform.position;
         float distance = Vector3.Distance(Trail.transform.position, HitPoint);
         float remainingDistance = distance;
@@ -118,6 +118,7 @@ public class SniperRifle : MonoBehaviour
     }
     private IEnumerator Reload()
     {
+        
         isReloading = true;
         animator.SetBool("isReloading", true);
         gunAudio.clip = sniperReloadAudio;
