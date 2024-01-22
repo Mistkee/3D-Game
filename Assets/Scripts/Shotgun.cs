@@ -61,7 +61,7 @@ public class Shotgun : MonoBehaviour
 
             for (int i = 0; i > 9; i++)
             {
-                
+
                 RaycastHit hit;
                 /*RaycastHit hit2;
                 RaycastHit hit3;
@@ -70,9 +70,9 @@ public class Shotgun : MonoBehaviour
                 RaycastHit hit6;
                 RaycastHit hit7;
                 RaycastHit hit8;*/
-            
 
-            
+
+
                 if (Physics.Raycast(rayOrigin, GetDirection(), out hit, weaponRange))
                 {
                     TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
