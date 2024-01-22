@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
@@ -19,7 +20,7 @@ public class Gun : MonoBehaviour
     private TrailRenderer bulletTrail;
     [SerializeField]
     private float BulletSpeed = 100;
-
+    public TextMeshProUGUI ammoText;
 
     public int ammo = 8;
 
@@ -49,7 +50,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
         //MISSING LAYER MASK FOR ENEMIES/WALLS DISTINCTION.
-        // ammotext = (ammo + '/ 8');
+        ammoText.text = ammo + " / 8 ";
         if (Input.GetButtonDown ("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
             shotParticle.Play();

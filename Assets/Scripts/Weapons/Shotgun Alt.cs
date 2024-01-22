@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShotgunAlt : MonoBehaviour
@@ -19,6 +20,7 @@ public class ShotgunAlt : MonoBehaviour
     [SerializeField]
     private float BulletSpeed = 100;
     private Vector3 direction;
+    public TextMeshProUGUI ammoText;
 
     public int ammo = 4;
 
@@ -48,7 +50,7 @@ public class ShotgunAlt : MonoBehaviour
     void Update()
     {
         //MISSING LAYER MASK FOR ENEMIES/WALLS DISTINCTION.
-
+        ammoText.text = ammo + " / 4 ";
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
             shotParticle.Play();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MachineGun : MonoBehaviour
@@ -18,7 +19,7 @@ public class MachineGun : MonoBehaviour
     private TrailRenderer bulletTrail;
     [SerializeField]
     private float BulletSpeed = 100;
-
+    public TextMeshProUGUI ammoText;
 
     public int ammo = 40;
 
@@ -48,7 +49,7 @@ public class MachineGun : MonoBehaviour
     void Update()
     {
         //MISSING LAYER MASK FOR ENEMIES/WALLS DISTINCTION.
-
+        ammoText.text = ammo + " / 40 ";
         if (Input.GetButton("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
             shotParticle.Play();

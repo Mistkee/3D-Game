@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SniperRifle : MonoBehaviour
@@ -18,7 +19,7 @@ public class SniperRifle : MonoBehaviour
     private TrailRenderer bulletTrail;
     [SerializeField]
     private float BulletSpeed = 100;
-
+    public TextMeshProUGUI ammoText;
 
     public int ammo = 6;
 
@@ -49,7 +50,7 @@ public class SniperRifle : MonoBehaviour
     void Update()
     {
         //MISSING LAYER MASK FOR ENEMIES/WALLS DISTINCTION.
-
+        ammoText.text = ammo + " / 6 ";
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
             shotParticle.Play();
