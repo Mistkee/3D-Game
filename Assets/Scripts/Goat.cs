@@ -13,18 +13,22 @@ public class Goat : MonoBehaviour
     public float hitForce = 0f;
     public Transform gunEnd;
     public GameObject player;
-    [SerializeField]
-    private ParticleSystem shotParticle;
+    //[SerializeField]
+    //private TrailRenderer bulletTrail;
+    //[SerializeField]
+    private float BulletSpeed = 100;
+    public int ammo = 150;
+    //[SerializeField]
+    //private ParticleSystem shotParticle;
     [SerializeField]
     private ParticleSystem impactParticle;
+    
     [SerializeField]
-    private TrailRenderer bulletTrail;
-    [SerializeField]
-    private float BulletSpeed = 100;
+    private GameObject fireStream;
     private bool isFiring;
     private int fireTime;
 
-    public int ammo = 150;
+    
 
     public Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
@@ -57,15 +61,15 @@ public class Goat : MonoBehaviour
         {
             isFiring = true;
             //change this for a fire effect
-            shotParticle.Play();
+            //shotParticle.Play();
             nextFire = Time.time + fireRate;
             
             StartCoroutine(ShotEffect());
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
             //while ammo>=0 play fire effect
-            
-            
+
+            fireStream.SetActive(true);
             
 
             ammo--;
@@ -73,8 +77,8 @@ public class Goat : MonoBehaviour
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
             {
                 //make trail invisible and add a new fire impact effect
-                TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
-                StartCoroutine(SpawnTrail(trail, hit.point, hit.normal, true));
+                //TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
+                //StartCoroutine(SpawnTrail(trail, hit.point, hit.normal, true));
                 
 
                 Enemy health = hit.collider.GetComponent<Enemy>();
@@ -91,13 +95,14 @@ public class Goat : MonoBehaviour
             else
             {
                 
-                TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
+                //TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
 
-                StartCoroutine(SpawnTrail(trail, gunEnd.position + transform.forward * weaponRange, Vector3.zero, false));
+                //StartCoroutine(SpawnTrail(trail, gunEnd.position + transform.forward * weaponRange, Vector3.zero, false));
             }
         }
         else
         {
+            fireStream.SetActive(false);
             isFiring = false;
         }
 
@@ -127,7 +132,7 @@ public class Goat : MonoBehaviour
         gunAudio.Play();
         yield return shotDuration;
     }
-    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint, Vector3 HitNormal, bool MadeImpact)
+    /*private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint, Vector3 HitNormal, bool MadeImpact)
     {
         
         Vector3 startPosition = Trail.transform.position;
@@ -150,7 +155,7 @@ public class Goat : MonoBehaviour
         }
 
         Destroy(Trail.gameObject, Trail.time);
-    }
+    }*/
     private IEnumerator Reload()
     {
         
