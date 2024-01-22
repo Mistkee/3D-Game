@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform player;
+    public Transform enemySpawner;
     public float spawnRadius = 10f;
     public int wavesCount = 3;
     public float waveWaitDuration = 180f; // 3 minutes
@@ -45,8 +46,8 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3 randomPos = player.position + Random.insideUnitSphere * spawnRadius;
-            randomPos.y = player.position.y+3;
+            Vector3 randomPos = enemySpawner.position + Random.insideUnitSphere * spawnRadius;
+            randomPos.y = enemySpawner.position.y+3;
             Instantiate(enemyPrefab, randomPos, Quaternion.identity);
         }
     }
