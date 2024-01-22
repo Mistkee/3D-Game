@@ -13,15 +13,17 @@ public class EnemySpawner : MonoBehaviour
     public Text waveText;
     public Text timerText;
     private float timer;
+    private int currentWave = 1;
 
     void Start()
     {
+        LoadWave(); // Загрузка текущей волны
         StartCoroutine(SpawnWaves());
     }
 
     IEnumerator SpawnWaves()
     {
-        for (int wave = 1; wave <= wavesCount; wave++)
+        for (int wave = currentWave; wave <= wavesCount; wave++)
         {
             DisplayWaveMessage(wave);
 
@@ -30,16 +32,26 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemies(wave * 5);
 
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0); // Enemy check
+
             if (wave + 1 <= wavesCount)
             {
+                DeactivateObjects(); // Деактивация объектов между волнами
                 StartTimer();
 
                 yield return new WaitForSeconds(waveWaitDuration); // Next wave timer
+                currentWave++;
                 StopTimer();
+                SaveWave();
             }
         }
+
         waveText.text = "All waves completed!";
         Debug.Log("All waves completed!");
+    }
+
+    void DeactivateObjects()
+    {
+        // Ваш код для деактивации объектов
     }
 
     void SpawnEnemies(int count)
@@ -47,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector3 randomPos = enemySpawner.position + Random.insideUnitSphere * spawnRadius;
-            randomPos.y = enemySpawner.position.y+3;
+            randomPos.y = enemySpawner.position.y+5;
             Instantiate(enemyPrefab, randomPos, Quaternion.identity);
         }
     }
@@ -82,6 +94,19 @@ public class EnemySpawner : MonoBehaviour
             timerText.text = "Time left: " + Mathf.FloorToInt(timer)+ "s";
             yield return new WaitForSeconds(1f);
             timer--;
+        }
+    }
+
+    void SaveWave()
+    {
+        PlayerPrefs.SetInt("CurrentWave", currentWave);
+        PlayerPrefs.Save();
+    }
+    void LoadWave()
+    {
+        if (PlayerPrefs.HasKey("CurrentWave"))
+        {
+            currentWave = PlayerPrefs.GetInt("CurrentWave");
         }
     }
 }
