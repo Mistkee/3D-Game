@@ -13,20 +13,19 @@ public class Goat : MonoBehaviour
     public float hitForce = 0f;
     public Transform gunEnd;
     public GameObject player;
-    //[SerializeField]
-    //private TrailRenderer bulletTrail;
-    //[SerializeField]
+    
     private float BulletSpeed = 100;
     public int ammo = 150;
-    //[SerializeField]
-    //private ParticleSystem shotParticle;
+    
     [SerializeField]
     private ParticleSystem impactParticle;
     
     [SerializeField]
     private GameObject fireStream;
+    [SerializeField]
+    private GameObject reloadSteam;
     private bool isFiring;
-    private int fireTime;
+    
 
     
 
@@ -43,7 +42,7 @@ public class Goat : MonoBehaviour
 
 
     private float nextFire;
-    // Start is called before the first frame update
+    
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -67,8 +66,8 @@ public class Goat : MonoBehaviour
             StartCoroutine(ShotEffect());
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
-            //while ammo>=0 play fire effect
-
+            
+            //THIS IS THE BROKEN EFFECT
             fireStream.SetActive(true);
             
 
@@ -76,11 +75,7 @@ public class Goat : MonoBehaviour
 
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
             {
-                //make trail invisible and add a new fire impact effect
-                //TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
-                //StartCoroutine(SpawnTrail(trail, hit.point, hit.normal, true));
                 
-
                 Enemy health = hit.collider.GetComponent<Enemy>();
                 if (health != null)
                 {
@@ -92,13 +87,7 @@ public class Goat : MonoBehaviour
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
                 }
             }
-            else
-            {
-                
-                //TrailRenderer trail = Instantiate(bulletTrail, gunEnd.position, Quaternion.identity);
-
-                //StartCoroutine(SpawnTrail(trail, gunEnd.position + transform.forward * weaponRange, Vector3.zero, false));
-            }
+            
         }
         else
         {
@@ -106,62 +95,43 @@ public class Goat : MonoBehaviour
             isFiring = false;
         }
 
-        if (isFiring && fireTime == 0)
+        if (isFiring)
         {
             
             animator.SetBool("Firing", true);
-            fireTime++;
+            
         }
         if (!isFiring)
         {
             animator.SetBool("Firing", false);
-            fireTime = 0;
+            
         }
 
             if (ammo <= 0)
         {
-            animator.SetBool("isReloading", true);
+            
             StartCoroutine(Reload());
         }
     }
 
     private IEnumerator ShotEffect()
     {
-        //change this for a fire effect
+        
         gunAudio.clip = goatAudio;
         gunAudio.Play();
         yield return shotDuration;
     }
-    /*private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint, Vector3 HitNormal, bool MadeImpact)
-    {
-        
-        Vector3 startPosition = Trail.transform.position;
-        float distance = Vector3.Distance(Trail.transform.position, HitPoint);
-        float remainingDistance = distance;
-
-        while (remainingDistance > 0)
-        {
-            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
-
-            remainingDistance -= BulletSpeed * Time.deltaTime;
-
-            yield return null;
-        }
-
-        Trail.transform.position = HitPoint;
-        if (MadeImpact)
-        {
-            Instantiate(impactParticle, HitPoint, Quaternion.LookRotation(HitNormal));
-        }
-
-        Destroy(Trail.gameObject, Trail.time);
-    }*/
+    
     private IEnumerator Reload()
     {
         
         ammo++;
         isReloading = true;
-        
+
+        //OTHER BROKEN ANIMATION AND EFFECT
+        animator.SetBool("isReloading", true);
+        reloadSteam.SetActive(true);
+
         gunAudio.clip = goatReloadAudio;
         gunAudio.Play();
         while (ammo <= 150)
@@ -170,7 +140,9 @@ public class Goat : MonoBehaviour
             ammo++;
             yield return reloadDuration;
         }
+        
         animator.SetBool("isReloading", false);
         isReloading = false;
+        reloadSteam.SetActive(false);
     }
 }

@@ -309,7 +309,7 @@ public class ShotgunAlt : MonoBehaviour
         gunAudio.clip = shotgunReloadAudio;
         gunAudio.Play();
         yield return reloadDuration;
-        ammo = 8;
+        ammo = 4;
         animator.SetBool("isReloading", false);
         isReloading = false;
     }
