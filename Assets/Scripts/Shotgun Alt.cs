@@ -257,11 +257,16 @@ public class ShotgunAlt : MonoBehaviour
 
     private Vector3 GetDirection()
     {
-        float bulletSpread = 1f;
+        Vector3 direction = transform.forward;
+
+        float bulletSpread = 0.2f;
 
         direction += new Vector3(Random.Range(-bulletSpread, bulletSpread),
                                 Random.Range(-bulletSpread, bulletSpread),
-                                1);
+                                Random.Range(-bulletSpread, bulletSpread));
+
+        direction.Normalize();
+
         return direction;
     }
 
