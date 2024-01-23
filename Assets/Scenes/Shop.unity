@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pistol: {fileID: 1071580631}
-  rifle: {fileID: 0}
-  sniperrifle: {fileID: 0}
+  rifle: {fileID: 2117163225}
+  sniperrifle: {fileID: 2117163225}
   shotgun: {fileID: 948068962}
   Flamethrower: {fileID: 2117163225}
 --- !u!1001 &181688254

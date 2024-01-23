@@ -1,4 +1,3 @@
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,10 @@ public class Shop : MonoBehaviour
     public Text nameText;
     public Text hintText;
 
-
+    private void Start()
+    {
+        SetEquippedWeapon(PlayerPrefs.GetInt("EquippedWeaponId"));
+    }
     private void Update()
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
@@ -44,14 +46,14 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                priceText.text = ""; // Скрываем текст, если не наведено на товар
+                priceText.text = "";
                 nameText.text = "";
                 hintText.text = "";
             }
         }
         else
         {
-            priceText.text = ""; // Скрываем текст, если не наведено на объект
+            priceText.text = "";
             nameText.text = "";
             hintText.text = "";
         }
@@ -65,50 +67,44 @@ public class Shop : MonoBehaviour
 
     private void PurchaseObject(ShopItem shopItem, int cost)
     {
-        ArsenalManager arsenal = FindObjectOfType<ArsenalManager>();
         int id = shopItem.GetId();
-        // Логика покупки товара
+
         Debug.Log("Item purchased!");
         shopItem.Purchase();
-        if (id==0)
+
+        // Save purchased item state and ID in PlayerPrefs
+        PlayerPrefs.SetInt("Item" + id + "Purchased", 1);
+        PlayerPrefs.SetInt("EquippedWeaponId", id);
+
+        SetEquippedWeapon(id);
+    }
+
+    private void SetEquippedWeapon(int id)
+    {
+        ArsenalManager arsenal = FindObjectOfType<ArsenalManager>();
+        arsenal.pistol.SetActive(false);
+        arsenal.shotgun.SetActive(false);
+        arsenal.rifle.SetActive(false);
+        arsenal.sniperrifle.SetActive(false);
+        arsenal.Flamethrower.SetActive(false);
+
+        switch (id)
         {
-            arsenal.pistol.SetActive(true);
-            arsenal.shotgun.SetActive(false);
-            arsenal.rifle.SetActive(false);
-            arsenal.sniperrifle.SetActive(false);
-            arsenal.Flamethrower.SetActive(false);
-        }
-        else if (id==1)
-        {
-            arsenal.pistol.SetActive(false);
-            arsenal.shotgun.SetActive(true);
-            arsenal.rifle.SetActive(false);
-            arsenal.sniperrifle.SetActive(false);
-            arsenal.Flamethrower.SetActive(false);
-        }
-        else if (id == 2)
-        {
-            arsenal.pistol.SetActive(false);
-            arsenal.shotgun.SetActive(false);
-            arsenal.rifle.SetActive(true);
-            arsenal.sniperrifle.SetActive(false);
-            arsenal.Flamethrower.SetActive(false);
-        }
-        else if (id == 3)
-        {
-            arsenal.pistol.SetActive(false);
-            arsenal.shotgun.SetActive(false);
-            arsenal.rifle.SetActive(false);
-            arsenal.sniperrifle.SetActive(true);
-            arsenal.Flamethrower.SetActive(false);
-        }
-        else if (id == 4)
-        {
-            arsenal.pistol.SetActive(false);
-            arsenal.shotgun.SetActive(false);
-            arsenal.rifle.SetActive(false);
-            arsenal.sniperrifle.SetActive(false);
-            arsenal.Flamethrower.SetActive(true);
+            case 0:
+                arsenal.pistol.SetActive(true);
+                break;
+            case 1:
+                arsenal.shotgun.SetActive(true);
+                break;
+            case 2:
+                arsenal.rifle.SetActive(true);
+                break;
+            case 3:
+                arsenal.sniperrifle.SetActive(true);
+                break;
+            case 4:
+                arsenal.Flamethrower.SetActive(true);
+                break;
         }
     }
 }

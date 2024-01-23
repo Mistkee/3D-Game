@@ -11,12 +11,34 @@ public class ArsenalManager : MonoBehaviour
     public GameObject Flamethrower;
     void Start()
     {
-        
+        SetEquippedWeapon(PlayerPrefs.GetInt("EquippedWeaponId"));
+        Debug.Log("EquippedWeaponId");
     }
-
-    // Update is called once per frame
-    void Update()
+    private void SetEquippedWeapon(int id)
     {
-        
+        pistol.SetActive(false);
+        shotgun.SetActive(false);
+        rifle.SetActive(false);
+        sniperrifle.SetActive(false);
+        Flamethrower.SetActive(false);
+
+        switch (id)
+        {
+            case 0:
+                pistol.SetActive(true);
+                break;
+            case 1:
+                shotgun.SetActive(true);
+                break;
+            case 2:
+                rifle.SetActive(true);
+                break;
+            case 3:
+                sniperrifle.SetActive(true);
+                break;
+            case 4:
+                Flamethrower.SetActive(true);
+                break;
+        }
     }
 }
