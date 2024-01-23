@@ -46,7 +46,8 @@ public class Goat : MonoBehaviour
         animator = GetComponent<Animator>();
 
         gunAudio = player.GetComponent<AudioSource>();
-
+        gunAudio.clip = goatAudio;
+        gunAudio.Play();
     }
 
     // Update is called once per frame
@@ -56,11 +57,15 @@ public class Goat : MonoBehaviour
         ammoText.text = ammo + " / 150 ";
         if (Input.GetButton("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
         {
+            StartCoroutine(ShotEffect());
+        }
+        if (Input.GetButton("Fire1") && Time.time > nextFire && ammo > 0 && !isReloading)
+        {
             
             
             nextFire = Time.time + fireRate;
             
-            StartCoroutine(ShotEffect());
+            
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
             RaycastHit hit;
             

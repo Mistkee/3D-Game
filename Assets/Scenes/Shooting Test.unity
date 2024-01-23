@@ -262,11 +262,11 @@ MonoBehaviour:
   impactParticle: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
   bulletTrail: {fileID: 328621789431213768, guid: 3e251a87d81c9d942af4ae8db97ece87, type: 3}
   BulletSpeed: 100
-  ammoText: {fileID: 0}
+  ammoText: {fileID: 368883063}
   ammo: 40
   fpsCam: {fileID: 1638095768}
-  machinegunAudio: {fileID: 0}
-  machinegunReloadAudio: {fileID: 0}
+  machinegunAudio: {fileID: 8300000, guid: 0addb2a545f9367448c4a3aca386545b, type: 3}
+  machinegunReloadAudio: {fileID: 8300000, guid: 18b2e884b46d9064db3faaa7f558d241, type: 3}
 --- !u!1 &101086152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1735024089641582, guid: 378b2c30ef426554495292cb902cb8f4, type: 3}
@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -337, y: 91}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &368883063
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: '8 / 8 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -525,14 +525,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -279.27246, y: 0, z: -203.7312, w: -41.2041}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1165,11 +1165,11 @@ MonoBehaviour:
   impactParticle: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
   bulletTrail: {fileID: 328621789431213768, guid: 3e251a87d81c9d942af4ae8db97ece87, type: 3}
   BulletSpeed: 100
-  ammoText: {fileID: 0}
+  ammoText: {fileID: 368883063}
   ammo: 8
   fpsCam: {fileID: 1638095768}
-  handgunAudio: {fileID: 8300000, guid: 81a6153000036344e98c354b326e080c, type: 3}
-  handgunReloadAudio: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
+  handgunAudio: {fileID: 8300000, guid: a11e20b7b2f0f274c83706a34402b4c3, type: 3}
+  handgunReloadAudio: {fileID: 8300000, guid: afd28dfb2b4c32841a5a56ff30ac51c6, type: 3}
 --- !u!95 &1046540690
 Animator:
   serializedVersion: 5
@@ -2827,11 +2827,11 @@ MonoBehaviour:
   impactParticle: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
   bulletTrail: {fileID: 328621789431213768, guid: 3e251a87d81c9d942af4ae8db97ece87, type: 3}
   BulletSpeed: 100
-  ammoText: {fileID: 0}
+  ammoText: {fileID: 368883063}
   ammo: 4
   fpsCam: {fileID: 1638095768}
-  shotgunAudio: {fileID: 0}
-  shotgunReloadAudio: {fileID: 0}
+  shotgunAudio: {fileID: 8300000, guid: d6fd84cabdf323245825ae862671c42f, type: 3}
+  shotgunReloadAudio: {fileID: 8300000, guid: 7cea5887a5d5264458ff9b2724a93d10, type: 3}
 --- !u!95 &1686177926
 Animator:
   serializedVersion: 5
@@ -2963,11 +2963,11 @@ MonoBehaviour:
   impactParticle: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
   bulletTrail: {fileID: 328621789431213768, guid: 3e251a87d81c9d942af4ae8db97ece87, type: 3}
   BulletSpeed: 100
-  ammoText: {fileID: 0}
+  ammoText: {fileID: 368883063}
   ammo: 5
   fpsCam: {fileID: 1638095768}
-  sniperAudio: {fileID: 0}
-  sniperReloadAudio: {fileID: 0}
+  sniperAudio: {fileID: 8300000, guid: 1169a844351d53b45a5ac22d7055e8b6, type: 3}
+  sniperReloadAudio: {fileID: 8300000, guid: cd879c37b8824e1499159b8cf4f57345, type: 3}
 --- !u!1 &1811255331 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3507746843320673371, guid: 4f9eebc977b93d641a58f15164948196, type: 3}
@@ -2985,7 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9bcaced5d8fb3418ad1499306330c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunDamage: 10
+  gunDamage: 4
   fireRate: 0.05
   weaponRange: 10
   hitForce: 0
@@ -2995,10 +2995,10 @@ MonoBehaviour:
   impactParticle: {fileID: 9064919875212695174, guid: a5e1e2c4d2cd81f4abed6272a2b8187a, type: 3}
   fireStream: {fileID: 949188434}
   reloadSteam: {fileID: 101086152}
-  ammoText: {fileID: 0}
+  ammoText: {fileID: 368883063}
   fpsCam: {fileID: 1638095768}
-  goatAudio: {fileID: 0}
-  goatReloadAudio: {fileID: 0}
+  goatAudio: {fileID: 8300000, guid: 4b998c440d0976d4ea661a62d34dc02d, type: 3}
+  goatReloadAudio: {fileID: 8300000, guid: e4e777a7d3018be4cbbadcdfe6dbff75, type: 3}
 --- !u!1 &1880165044
 GameObject:
   m_ObjectHideFlags: 0
