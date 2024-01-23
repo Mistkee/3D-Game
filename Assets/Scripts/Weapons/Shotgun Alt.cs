@@ -34,7 +34,7 @@ public class ShotgunAlt : MonoBehaviour
     public AudioClip shotgunAudio;
     public AudioClip shotgunReloadAudio;
 
-
+    Enemy lastHitEnemy;
 
     private float nextFire;
     // Start is called before the first frame update
@@ -79,11 +79,24 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit.point, hit.normal, true));
 
                 Enemy health = hit.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth-gunDamage>0)
                 {
                     health.Damage(gunDamage);
                 }
+                else if (health != null && health!=lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
 
+                }
                 if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
@@ -101,9 +114,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit2.point, hit2.normal, true));
 
                 Enemy health = hit2.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit2.rigidbody != null)
@@ -123,9 +150,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit3.point, hit3.normal, true));
 
                 Enemy health = hit3.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit3.rigidbody != null)
@@ -145,9 +186,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit4.point, hit4.normal, true));
 
                 Enemy health = hit4.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit4.rigidbody != null)
@@ -167,9 +222,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit5.point, hit5.normal, true));
 
                 Enemy health = hit5.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit5.rigidbody != null)
@@ -189,9 +258,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit6.point, hit6.normal, true));
 
                 Enemy health = hit6.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit6.rigidbody != null)
@@ -211,9 +294,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit7.point, hit7.normal, true));
 
                 Enemy health = hit7.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit7.rigidbody != null)
@@ -233,9 +330,23 @@ public class ShotgunAlt : MonoBehaviour
                 StartCoroutine(SpawnTrail(trail, hit8.point, hit8.normal, true));
 
                 Enemy health = hit8.collider.GetComponent<Enemy>();
-                if (health != null)
+                if (health != null && health.currentHealth - gunDamage > 0)
                 {
                     health.Damage(gunDamage);
+                }
+                else if (health != null && health != lastHitEnemy)
+                {
+                    health.Damage(gunDamage);
+                    lastHitEnemy = health;
+                }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
                 }
 
                 if (hit8.rigidbody != null)

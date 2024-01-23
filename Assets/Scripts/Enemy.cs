@@ -77,6 +77,7 @@ public class Enemy : MonoBehaviour
         {
             //if health has fallen below zero, deactivate it 
             Destroy(gameObject);
+            UIManager.score += 20;
         }
     }
 }

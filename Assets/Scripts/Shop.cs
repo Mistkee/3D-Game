@@ -61,14 +61,18 @@ public class Shop : MonoBehaviour
 
     private bool CanPurchase(int cost)
     {
-        // Логика проверки, может ли игрок себе позволить покупку
-        return true;
+        if (cost <= UIManager.score)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void PurchaseObject(ShopItem shopItem, int cost)
     {
         int id = shopItem.GetId();
 
+        UIManager.score-=cost;
         Debug.Log("Item purchased!");
         shopItem.Purchase();
 

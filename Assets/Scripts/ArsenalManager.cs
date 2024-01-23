@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArsenalManager : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class ArsenalManager : MonoBehaviour
         SetEquippedWeapon(PlayerPrefs.GetInt("EquippedWeaponId"));
         Debug.Log("EquippedWeaponId");
     }
+
     private void SetEquippedWeapon(int id)
     {
         pistol.SetActive(false);

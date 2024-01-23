@@ -1,5 +1,7 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class FPCamera : MonoBehaviour
 {
     public float horizontalSpeed = 1f;
@@ -8,28 +10,26 @@ public class FPCamera : MonoBehaviour
     public float verticalSpeed = 1f;
     private float xRotation = 0.0f;
     private float yRotation = 0.0f;
-    private bool MenuIsOn;
+    public float restartDelay = 2f;
+    public Text gameOverText;
     private Camera cam;
-
     void Start()
     {
         CurrentHealth = MaxHealth;
         cam = Camera.main;
-        MenuIsOn = false;
+        gameOverText.text = "";
     }
 
     void Update()
     {
         // Cursor lock
-        if (Input.GetKeyDown(KeyCode.Escape) && !MenuIsOn)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
-            MenuIsOn = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && MenuIsOn)
+        else
         {
             Cursor.lockState = CursorLockMode.Locked;
-            MenuIsOn = false;
         }
 
         //Camera movement
@@ -42,6 +42,19 @@ public class FPCamera : MonoBehaviour
 
         cam.transform.eulerAngles = new Vector3(xRotation, yRotation, 0.0f);
 
+        if (CurrentHealth<=0)
+        {
+            gameOverText.text = "Game Over";
+            Invoke("Restart",restartDelay);
+            UIManager.score = 0;
+        }
+
+    }
+
+    void Restart()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("LevelDesign");
     }
 }
 

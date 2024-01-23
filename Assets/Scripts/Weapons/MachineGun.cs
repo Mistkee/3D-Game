@@ -75,6 +75,16 @@ public class MachineGun : MonoBehaviour
                 {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
                 }
+
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
+
+                }
             }
             else
             {

@@ -83,7 +83,15 @@ public class Goat : MonoBehaviour
                 {
                     health.Damage(gunDamage);
                 }
+                if (hit.collider.CompareTag("BreakableWall"))
+                {
+                    BreakableWall breakableWall = hit.collider.GetComponent<BreakableWall>();
+                    if (breakableWall != null)
+                    {
+                        breakableWall.Break();
+                    }
 
+                }
                 if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);

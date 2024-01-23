@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour
 {
-    public int cost = 10; // Установите стоимость товара в инспекторе
+    public int cost;
     public string itemName;
     bool purchased;
     public int id;
+
+
     public int GetCost()
     {
         return cost;
@@ -27,6 +29,5 @@ public class ShopItem : MonoBehaviour
     {
         // Логика покупки товара
         Debug.Log("Item purchased!");
-        purchased = true;
     }
 }

@@ -49,6 +49,10 @@ public class EnemySpawner : MonoBehaviour
         Debug.Log("All waves completed!");
     }
 
+    void Restart()
+    {
+        
+    }
     void DeactivateObjects()
     {
         // Ваш код для деактивации объектов
